@@ -7,6 +7,8 @@ import org.example.expert.domain.comment.entity.Comment;
 import org.example.expert.domain.common.entity.Timestamped;
 import org.example.expert.domain.manager.entity.Manager;
 import org.example.expert.domain.user.entity.User;
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
 import java.util.List;
