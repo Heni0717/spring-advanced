@@ -13,8 +13,8 @@ import java.util.Optional;
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
 //    @Query("SELECT t FROM Todo t LEFT JOIN FETCH t.user u ORDER BY t.modifiedAt DESC")
+//    2: JPQL -> @EntityGraph로 수정
     @EntityGraph(attributePaths = {"user_id"})
-    @Query("select t from Todo t order by t.modifiedAt desc")
     Page<Todo> findAllByOrderByModifiedAtDesc(Pageable pageable);
 
     @Query("SELECT t FROM Todo t " +

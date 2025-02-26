@@ -35,6 +35,7 @@ public class ManagerService {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
 
+        // 3-2: todo의 user가 null인 경우를 테스트하고자 했으나, 검증로직이 없었기에 추가
         if(todo.getUser() == null){
             throw new InvalidRequestException("todo의 user가 존재하지 않습니다.");
         }

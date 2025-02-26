@@ -26,12 +26,13 @@ public class WeatherClient {
         ResponseEntity<WeatherDto[]> responseEntity =
                 restTemplate.getForEntity(buildWeatherApiUri(), WeatherDto[].class);
 
-        WeatherDto[] weatherArray = responseEntity.getBody();
         if (!HttpStatus.OK.equals(responseEntity.getStatusCode())) {
             throw new ServerException("날씨 데이터를 가져오는데 실패했습니다. 상태 코드: " + responseEntity.getStatusCode());
         }
         // 1-2: 독립적인 if문으로 분리시킨다.
-        // 위의 에러가 발생했을때 이후 로직을 실행할 필요가 없으므로 예외처리를 하는 구문도 두번 훑을 필요도 없어진다..
+        // 위의 if문에서 에러가 발생했을때 이후 로직을 실행하지 않으므로 예외처리를 하는 구문을 두번 훑을 필요가 없어짐
+        // 같은 맥락으로, weatherArray 변수 선언과 초기화도 메모리를 사용하는 것이므로, 이 변수를 사용하는 if문 바로 위로 이동
+        WeatherDto[] weatherArray = responseEntity.getBody();
         if (weatherArray == null || weatherArray.length == 0) {
             throw new ServerException("날씨 데이터가 없습니다.");
         }

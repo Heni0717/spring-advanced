@@ -39,6 +39,7 @@ class ManagerServiceTest {
     private ManagerService managerService;
 
     @Test
+    // 3-2: exception 유형이 NPE가 아닌 IRE(메소드명 변경)
     public void manager_목록_조회_시_Todo가_없다면_IRE_에러를_던진다() {
         // given
         long todoId = 1L;
@@ -46,6 +47,7 @@ class ManagerServiceTest {
 
         // when & then
         InvalidRequestException exception = assertThrows(InvalidRequestException.class, () -> managerService.getManagers(todoId));
+        // Todo가 없음을 테스트하는 것이기에 Manager -> Todo로 변경
         assertEquals("Todo not found", exception.getMessage());
     }
 
@@ -68,6 +70,7 @@ class ManagerServiceTest {
             managerService.saveManager(authUser, todoId, managerSaveRequest)
         );
 
+        // 3-2: 테스트하고자 하는 검증로직을 saveManager 메소드 내에 추가, message도 그에 맞게 변경
         assertEquals("todo의 user가 존재하지 않습니다.", exception.getMessage());
     }
 
