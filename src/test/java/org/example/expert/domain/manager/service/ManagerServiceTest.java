@@ -70,8 +70,8 @@ class ManagerServiceTest {
             managerService.saveManager(authUser, todoId, managerSaveRequest)
         );
 
-        // 3-2: 테스트하고자 하는 검증로직을 saveManager 메소드 내에 추가, message도 그에 맞게 변경
-        assertEquals("todo의 user가 존재하지 않습니다.", exception.getMessage());
+        // 3-2: 테스트하고자 하는 검증로직을 saveManager 메소드 내에 추가, message 약간 수정
+        assertEquals("담당자를 등록하려고 하는 일정에 대한 유저가 유효하지 않습니다.", exception.getMessage());
     }
 
     @Test // 테스트코드 샘플
