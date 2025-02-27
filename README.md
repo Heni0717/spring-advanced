@@ -37,7 +37,6 @@ Spring 심화 주차 개인 과제
     - when 단계에서 `ServerException` → `InvalidRequestException` 으로 변경
   - `org.example.expert.domain.manager.service` - `ManagerServiceTest` - todo의_user가_null인_경우_예외가_발생한다()
     - ManagerService에 todo의 user가 null인 경우를 검증하는 로직이 없음
-    - if문으로 todo.getUser()가 null인 경우 예외를 발생시키는 코드 작성
-    - ManagerServiceTest의 expected 메시지 또한 로직에 맞게 변경
+    - todo.getUser()가 null인 경우 추가
 
 ---
